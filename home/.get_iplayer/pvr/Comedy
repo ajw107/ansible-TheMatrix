@@ -1,0 +1,6 @@
+category comedy
+exclude FM,nurse jackie,belfast fm,
+excludecategory children
+fields index
+type tv
+search0 .*

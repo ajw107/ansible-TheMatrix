@@ -1,0 +1,10 @@
+#index|type|name|pid|available|episode|seriesnum|episodenum|versions|duration|desc|channel|categories|thumbnail|timeadded|guidance|web
+80000|livetv|BBC Alba|bbc_alba||live|||default||Live stream of BBC Alba|BBC Alba||http://www.bbc.co.uk/iplayer/img/station_logos/bbc_alba.png|1345509050||http://www.bbc.co.uk/iplayer/playlive/bbc_alba/|
+80001|livetv|BBC Four|bbc_four||live|||default||Live stream of BBC Four|BBC Four||http://www.bbc.co.uk/iplayer/img/station_logos/bbc_four.png|1345509050||http://www.bbc.co.uk/iplayer/playlive/bbc_four/|
+80002|livetv|BBC News|bbc_news24||live|||default||Live stream of BBC News|BBC News||http://www.bbc.co.uk/iplayer/img/station_logos/bbc_news24.png|1345509050||http://www.bbc.co.uk/iplayer/playlive/bbc_news24/|
+80003|livetv|BBC One|bbc_one||live|||default||Live stream of BBC One|BBC One||http://www.bbc.co.uk/iplayer/img/station_logos/bbc_one.png|1345509050||http://www.bbc.co.uk/iplayer/playlive/bbc_one/|
+80004|livetv|BBC Parliament|bbc_parliament||live|||default||Live stream of BBC Parliament|BBC Parliament||http://www.bbc.co.uk/iplayer/img/station_logos/bbc_parliament.png|1345509050||http://www.bbc.co.uk/iplayer/playlive/bbc_parliament/|
+80005|livetv|BBC Three|bbc_three||live|||default||Live stream of BBC Three|BBC Three||http://www.bbc.co.uk/iplayer/img/station_logos/bbc_three.png|1345509050||http://www.bbc.co.uk/iplayer/playlive/bbc_three/|
+80006|livetv|BBC Two|bbc_two||live|||default||Live stream of BBC Two|BBC Two||http://www.bbc.co.uk/iplayer/img/station_logos/bbc_two.png|1345509050||http://www.bbc.co.uk/iplayer/playlive/bbc_two/|
+80007|livetv|CBBC|cbbc||live|||default||Live stream of CBBC|CBBC||http://www.bbc.co.uk/iplayer/img/station_logos/cbbc.png|1345509050||http://www.bbc.co.uk/iplayer/playlive/cbbc/|
+80008|livetv|CBeebies|cbeebies||live|||default||Live stream of CBeebies|CBeebies||http://www.bbc.co.uk/iplayer/img/station_logos/cbeebies.png|1345509050||http://www.bbc.co.uk/iplayer/playlive/cbeebies/|

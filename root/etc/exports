@@ -1,0 +1,33 @@
+# /etc/exports
+
+# Usually I only use NFS in a read-only situation and this file is configured
+# based on that assumption (primarily KODI).
+# http://kodi.wiki/view/NFS
+
+/mnt/storage/Movies            192.168.1.1/24(rw,fsid=1,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/TV                192.168.1.1/24(rw,fsid=2,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/Unprocessed       192.168.1.1/24(rw,fsid=3,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/Backups           192.168.1.1/24(rw,fsid=4,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/Videos            192.168.1.1/24(rw,fsid=5,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/Music             192.168.1.1/24(rw,fsid=6,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/Audiobooks        192.168.1.1/24(rw,fsid=7,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/Books             192.168.1.1/24(rw,fsid=8,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/Docs              192.168.1.1/24(rw,fsid=9,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/DoctorWho         192.168.1.1/24(rw,fsid=10,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/Downloads         192.168.1.1/24(rw,fsid=11,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/Karaoke           192.168.1.1/24(rw,fsid=12,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/Pictures          192.168.1.1/24(rw,fsid=13,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/Software          192.168.1.1/24(rw,fsid=14,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/Newsgroups        192.168.1.1/24(rw,fsid=15,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/Torrents          192.168.1.1/24(rw,fsid=16,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/3D                192.168.1.1/24(rw,fsid=17,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+/mnt/storage/Comics            192.168.1.1/24(rw,fsid=18,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+
+
+/mnt/storage/tftpboot          192.168.1.1/24(ro,fsid=19,all_squash,insecure,async,no_subtree_check)
+/mnt/storage/PXE_openelec_DATA 192.168.1.1/24(rw,fsid=20,no_root_squash,insecure,async,no_subtree_check)
+/mnt/storage/PXE_openelec_OS   192.168.1.1/24(rw,fsid=21,no_root_squash,insecure,async,no_subtree_check)
+
+/opt                           192.168.1.1/24(rw,all_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)
+
+#            192.168.1.1/24(rw,no_root_squash,insecure,anonuid=1050,anongid=1050,sync,subtree_check)

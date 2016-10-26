@@ -1,0 +1,31 @@
+tag_longdesc 1
+fatfilename 1
+whitespace 1
+#radiomode flashaachigh,flashacc,flashaacstd,iphone,flashaudio,realaudio,flashaaclow
+tag_utf8 1
+rtmpdump /usr/local/bin/rtmpdump
+modes best
+nopurge 1
+thumbsizecache 512
+subdirformat <nameshort>
+thumb 1
+subdir 1
+atomicparsley /usr/bin/AtomicParsley
+future 0
+fileprefix <senum> <episodeshort> <pid>
+long 1
+listformat <index> <name> <episode>
+metadata xbmc
+tag_cnid 1
+tag_longdescription 1
+packagemanager apt
+tag_hdvideo 1
+expiry 3600
+#ffmpeg /home/alex/bin/ffmpeg
+refreshfuture 0
+mkv 1
+output /mnt/samba/TV/UK/New-Unsorted
+thumbsize 512
+force 0
+#tvmode flashhd,flashvhigh,flashvhigh1,flashhigh2,rtspvhigh1,rtspvhigh2,rtmp,flashhigh,flashstd,flashnormal,flashlow
+subtitles 1

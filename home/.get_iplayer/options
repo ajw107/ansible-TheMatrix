@@ -1,0 +1,24 @@
+#mkv 1
+versionlist default,audiodescribed,signed
+long 1
+subdirformat <nameshort>
+refreshfuture 0
+atomicparsley /usr/bin/AtomicParsley
+force 0
+#fatfilename 1
+whitespace 1
+output /mnt/storage/TV/UK/New-Unsorted
+ffmpeg /usr/bin/ffmpeg
+fileprefix <senum> <episodeshort> <pid>
+thumbsizecache 512
+subtitles 1
+expiry 3600
+listformat <index> <name> <episode>
+thumbsize 1920
+tag_utf8 1
+future 0
+modes tvbest,radiobest
+metadata xbmc
+thumb 1
+subdir 1
+nopurge 1

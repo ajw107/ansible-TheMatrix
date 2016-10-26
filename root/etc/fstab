@@ -1,0 +1,39 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/sda1 during installation
+UUID=bf80e51f-c275-4ad0-b415-bf056973559e /               ext4    errors=remount-ro 0       1
+# swap was on /dev/sda5 during installation
+UUID="639c9b3a-278c-4947-b6ce-f24f103c87e6" none          swap    sw              0       0
+
+UUID="53eeaf70-488a-408f-99f7-25419bb9f990" /mnt/parity1 xfs rw,auto,user,defaults,nofail 0 0
+UUID="d4475fe2-00fd-4f02-81bf-08dc1bdd32a0" /mnt/parity2 xfs rw,auto,user,defaults,nofail 0 0
+UUID="860b5e14-ad7b-465c-aa77-67d4f7c9778d" /mnt/parity3 xfs rw,auto,user,defaults,nofail 0 0
+# /mnt/parity4 xfs rw,auto,user,defaults,nofail 0 0
+
+UUID="763af4e5-9d46-455a-8e3e-c972d0145c44" /mnt/disk1 xfs defaults,nofail 0 0
+UUID="8e986d87-89df-4241-aaab-e6b647b85250" /mnt/disk2 xfs defaults,nofail 0 0
+UUID="80dd3efc-838a-4d3d-9ca0-193b994c1be6" /mnt/disk3 xfs defaults,nofail 0 0
+UUID="ad211c07-e904-4300-9e6b-6e5ab84c54d3" /mnt/disk4 xfs defaults,nofail 0 0
+UUID="f2478590-22b8-46a4-a991-1eda31b5a2bc" /mnt/disk5 xfs defaults,nofail 0 0
+UUID="3264f033-aeda-4d44-9fb8-402f63de15e1" /mnt/disk6 xfs defaults,nofail 0 0
+UUID="1a5bbfe3-f5fd-4ac2-baa1-1f028c5f2818" /mnt/disk7 xfs defaults,nofail 0 0
+UUID="7d31ad43-a50b-418b-9b8f-442c0eaf1ea0" /mnt/disk8 xfs defaults,nofail 0 0
+UUID="b0e05c50-5e30-4fb2-bad8-25d551f3ef6b" /mnt/disk9 xfs defaults,nofail 0 0
+UUID="d6b2f501-6bf9-421c-bfc0-11ff85180083" /mnt/disk10 xfs defaults,nofail 0 0
+UUID="56d05809-c123-4228-9f25-1e6d319b873e" /mnt/disk11 xfs defaults,nofail 0 0
+UUID="fbd5ad99-9ed3-4196-8108-2d0b2721a0fd" /mnt/disk12 xfs defaults,nofail 0 0
+UUID="f670dab1-2cd0-44c0-81db-93ff56611451" /mnt/disk13 xfs defaults,nofail 0 0
+UUID="56539721-21e0-43eb-a8a8-14c48dad9b44" /mnt/disk14 xfs defaults,nofail 0 0
+# /mnt/disk15 xfs defaults,nofail 0 0
+# /mnt/disk16 xfs defaults,nofail 0 0
+# /mnt/disk17 xfs defaults,nofail 0 0
+# /mnt/disk18 xfs defaults,nofail 0 0
+
+/mnt/disk* /mnt/storage fuse.mergerfs direct_io,defaults,allow_other,minfreespace=50G,fsname=mergerfs 0 0
+
+#/mnt/storage/Backups/swapfile.swp none swap sw 0 0

@@ -1,0 +1,314 @@
+---
+version: '2'
+services:
+  sabnzbd:
+    image: ajw107/docker-sabnzbd
+    container_name: sabnzbd
+    environment:
+      - PUID=1050
+      - PGID=1050
+      - TZ=Europe/London
+      - TERM=xterm-color
+    volumes:
+      - /opt/appdata/sabnzbd:/config
+      - /mnt/storage/Newsgroups:/mnt/Newsgroups
+      - /mnt/storage/DoctorWho:/mnt/DoctorWho
+      - /mnt/storage/Unprocessed:/mnt/Unprocessed
+    ports:
+      - "23002:8080"
+#    restart: always
+  couchpotato:
+    image: ajw107/docker-couchpotato
+    container_name: couchpotato
+    depends_on:
+      - sabnzbd
+      - deluged
+      - hydra
+    environment:
+      - PUID=1050
+      - PGID=1050
+      - TZ=Europe/London
+      - TERM=xterm-color
+    volumes:
+      - /opt/appdata/couchpotato:/config
+      - /mnt/storage/Unprocessed:/mnt/Unprocessed
+      - /mnt/storage/Movies:/mnt/Movies
+    ports:
+      - "23003:5050"
+    links:
+      - sabnzbd
+      - deluged
+      - hydra
+#    restart: always
+   plex:
+    image: ajw107/docker-plex
+    container_name: plex
+    environment:
+      - PUID=1050
+      - PGID=1050
+      - TZ=Europe/London
+      - VERSION=plexpass
+      - TERM=xterm-color
+    volumes:
+      - /opt/appdata/plexdata:/config
+      - /mnt/storage/TV:/data/tvshows
+      - /mnt/storage/Movies:/data/movies
+      - /mnt/storage/appdata/plextrans:/transcode
+    network_mode: host
+#     ports:
+#      - "32400:32400"
+#      - "32400:32400/udp"
+#      - "32469:32469"
+#      - "32469:32469/udp"
+#      - "5353:5353/udp"
+#      - "1900:1900/udp"
+#    restart: always
+  sonarr:
+    image: ajw107/docker-sonarr
+    container_name: sonarr
+    depends_on:
+      - sabnzbd
+      - deluged
+      - hydra
+    environment:
+      - PUID=1050
+      - PGID=1050
+      - TZ=Europe/London
+      - TERM=xterm-color
+    volumes:
+      - /dev/rtc:/dev/rtc:ro
+      - /opt/appdata/sonarr:/config
+      - /mnt/storage/Unprocessed:/mnt/Unprocessed
+      - /mnt/storage/TV:/mnt/TV
+    ports:
+      - "23004:8989"
+    links:
+      - sabnzbd
+      - deluged
+      - hydra
+#    restart: always
+  deluged:
+    image: ajw107/docker-deluge
+    container_name: deluged
+    environment:
+      - PUID=1050
+      - PGID=1050
+      - TZ=Europe/London
+      - TERM=xterm-color
+    volumes:
+      - /opt/appdata/deluged:/config
+      - /mnt/storage/Torrents:/mnt/Torrents
+      - /mnt/storage/DoctorWho:/mnt/DoctorWho
+      - /mnt/storage/Unprocessed:/mnt/Unprocessed
+      - /mnt/storage/Software:/mnt/Software
+      - /mnt/storage/Videos:/mnt/Videos
+    network_mode: "host"
+#    ports:
+#      - "8112:8112"
+#      - "58846:58846"
+#      - "58946:58946"
+#      - "58946:58946/udp"
+#    restart: always
+  headphones:
+    image: ajw107/docker-headphones
+    container_name: headphones
+    depends_on:
+      - sabnzbd
+      - deluged
+      - musicbrainz
+      - hydra
+    environment:
+      - PUID=1050
+      - PGID=1050
+      - TZ=Europe/London
+      - TERM=xterm-color
+    volumes:
+      - /opt/appdata/headphones:/config
+      - /mnt/storage/Unprocessed:/mnt/Unprocessed
+      - /mnt/storage/Torrents:/mnt/Torrents
+      - /mnt/storage/Music:/mnt/Music
+    ports:
+      - "23005:8181"
+    links:
+      - sabnzbd
+      - deluged
+      - musicbrainz
+      - hydra
+#    restart: always
+  mylar:
+    image: ajw107/mylar
+    container_name: mylar
+    depends_on:
+      - sabnzbd
+      - deluged
+      - hydra
+    environment:
+      - PUID=1050
+      - PGID=1050
+      - TZ=Europe/London
+      - TERM=xterm-color
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/mylar:/config
+      - /mnt/storage/Unprocessed:/mnt/Unprocessed
+      - /mnt/storage/Torrents:/mnt/Torrents
+      - /mnt/storage/Comics:/mnt/Comics
+    ports:
+      - "23006:8090"
+    links:
+      - sabnzbd
+      - deluged
+      - hydra
+#    restart: always
+  hydra:
+    image: ajw107/hydra
+    container_name: hydra
+    depends_on:
+      - sabnzbd
+    environment:
+      - PUID=1050
+      - PGID=1050
+      - TZ=Europe/London
+      - TERM=xterm-color
+    volumes:
+      - /opt/appdata/hydra:/config
+      - /mnt/storage/Newsgroups:/mnt/Newsgroups
+    ports:
+#default is 5075
+      - "23007:23007"
+    links:
+      - sabnzbd
+#    restart: always
+  owncloud:
+    image: ajw107/owncloud
+    container_name: owncloud
+    environment:
+      - PUID=1050
+      - PGID=1050
+      - TZ=Europe/London
+      - DB_PASS="owncloud"
+      - TERM=xterm-color
+    volumes:
+      - /opt/appdata/owncloud:/config
+      - /mnt/storage/Owncloud:/data
+    ports:
+      - "23008:443"
+#    restart: always
+  plexpy:
+    image: ajw107/docker-plexpy
+    container_name: plexpy
+    depends_on:
+      - plex
+    environment:
+      - PUID=1050
+      - PGID=1050
+      - TERM=xterm-color
+    volumes:
+      - /opt/appdata/plexpy:/config
+      - /opt/appdata/plexdata/Library/Application\ Support/Plex\ Media\ Server/Logs:/logs:ro
+    ports:
+      - "23009:8181"
+    links:
+      - plex
+#    restart: always
+  plexrequests:
+    image: ajw107/plexrequests
+    container_name: plexrequests
+    depends_on:
+      - plex
+    environment:
+      - PUID=1050
+      - PGID=1050
+      - TERM=xterm-color
+    volumes:
+      - /opt/appdata/plexrequests:/config
+      - /mnt/storage/TV:/tv
+    ports:
+      - "23010:3000"
+    links:
+      - plex
+#    restart: always
+  booksonic:
+    image: ironicbadger/booksonic
+    container_name: booksonic
+    environment:
+      - TERM=xterm-color
+    volumes:
+      - /opt/appdata/booksonic:/var/booksonic
+      - /mnt/storage/Audiobooks:/audiobooks
+    ports:
+      - "23011:8080"
+#    restart: always
+  musicbrainz:
+    image: ajw107/musicbrainz
+    container_name: musicbrainz
+    environment:
+      - PUID=1050
+      - PGID=1050
+      - TZ=Europe/London
+      - BRAINZCODE=YRdpobjXhqG2XfnTDLrMpITElUCrroAewzGNEf3j
+      - MAX_WORKERS=2
+      - TERM=xterm-color
+    volumes:
+      - /opt/appdata/musicbrainz:/config
+      - /mnt/storage/Music/Musicbrainz_db:/data
+    ports:
+      - "23012:5000"
+  comicstreamer:
+    image: ajw107/comicstreamer-docker
+    container_name: comicstreamer
+    environment:
+      - PUID=1050
+      - PGID=1050
+      - TERM=xterm-color
+    volumes:
+      - /opt/appdata/comicstreamer:/config
+      - /mnt/storage/Comics:/comics
+      - /var/run/dbus:/var/run/dbus
+    ports:
+      - "23014:32500"
+  softethervpn:
+    image: siomiz/softethervpn
+    container_name: softether
+    cap_add:
+      - NET_ADMIN 
+    environment:
+      - PUID=1050
+      - PGID=1050
+      - TZ=Europe/London
+      - TERM=xterm-color
+    volumes:
+      - /opt/appdata/vpn_server:/opt
+    ports:
+      - "443:443/tcp"
+      - "500:500/udp"
+      - "992:992/tcp"
+      - "4500:4500/udp"
+      - "1701:1701/tcp" 
+      - "1194:1194/udp"
+      - "5555:5555/tcp"
+  embyserver:
+    image: emby/embyserver:beta
+    container_name: embyserver
+    environment:
+      - APP_UID=1050
+      - APP_GID=1050
+      - TZ=Europe/London
+      - TERM=xterm-color
+      - APP_USER=abc
+      - APP_CONFIG=/config
+    volumes:
+      - /usr/local/bin:/target
+      - /opt/appdata/emby:/config
+      - /mnt/storage/Music:/Music
+      - /mnt/storage/Movies:/Movies
+      - /mnt/storage/TV:/TV
+      - /mnt/storage/Pictures:/Pictures
+      - /mnt/storage/Books:/Books
+      - /mnt/storage/DoctorWho:/DoctorWho
+      - /mnt/storage/Comics:/Comics
+    ports:
+      - "23015:8096/tcp"
+      - "8920:8920/tcp"
+      - "7359:7359/udp"
+      - "1900:1900/udp"

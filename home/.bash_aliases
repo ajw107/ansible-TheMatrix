@@ -1,0 +1,10 @@
+alias psgrep='ps aux | grep -i '
+alias aUg='sudo apt-get upgrade'
+alias aUp='sudo apt-get update'
+alias aD='sudo apt-get dist-upgrade'
+alias aAr='sudo apt-get autoremove'
+alias aAc='sudo apt-get autoclean'
+#alias cp='cp -g'
+#alias mv='mv -g'
+#alias mountFreeNAS='for folder in /mnt/samba/*; do sudo mount "$folder" && echo "$folder Mounted"; done'
+
